@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"git.apache.org/thrift.git/lib/go/thrift"
+	"github.com/apache/thrift/lib/go/thrift"
 )
 
 // Converter manages context for converting from data from one thrift protocol

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"git.apache.org/thrift.git/lib/go/thrift"
+	"github.com/apache/thrift/lib/go/thrift"
 )
 
 // Protocol represents a Thrift protocol type
