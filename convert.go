@@ -34,10 +34,6 @@ func (c Converter) convertMessage() error {
 		return err
 	}
 
-	if err := c.to.Flush(); err != nil {
-		return err
-	}
-
 	return nil
 }
 

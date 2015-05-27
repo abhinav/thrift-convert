@@ -2,15 +2,15 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 
 	"github.com/apache/thrift/lib/go/thrift"
 )
 
 var (
-	from Protocol
-	to   Protocol
+	from     Protocol
+	to       Protocol
+	isStruct = flag.Bool("struct", false, "convert a struct only")
 )
 
 func main() {
@@ -33,8 +33,17 @@ func main() {
 	}
 
 	converter := Converter{input, output}
-	if err := converter.convertMessage(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+	if *isStruct {
+		if err := converter.convertType(thrift.STRUCT); err != nil {
+			panic(err)
+		}
+	} else {
+		if err := converter.convertMessage(); err != nil {
+			panic(err)
+		}
+	}
+
+	if err := output.Flush(); err != nil {
+		panic(err)
 	}
 }
